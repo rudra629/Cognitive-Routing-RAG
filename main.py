@@ -26,7 +26,7 @@ print("\n-------------Phase 1: Vector-Based Persona Matching (The Router)-------
 vector_store = Chroma(embedding_function=embeddings)
 
 docs=[Document(page_content=text, metadata={"bot_id":name}) for name, text in Persona.items()]
-def route_to_bots(post_content:str,threshold:float=0.15):
+def route_to_bots(post_content:str,threshold:float=0.10):
     # routes a post to relevent bots
     results=vector_store.similarity_search_with_relevance_scores(post_content, k=3)
     matched_bots=[]
@@ -35,7 +35,7 @@ def route_to_bots(post_content:str,threshold:float=0.15):
             matched_bots.append((doc.metadata["bot_id"],score))
     return matched_bots
 
-sample_post="OpenAI just released a new model that might replTweakace junior developers."
+sample_post="OpenAI just released a new model that might replace junior developers."
 print(f"Post: {sample_post}\n")
 matched=route_to_bots(sample_post)
 print(f"Matched Bots: {matched}")
