@@ -35,7 +35,7 @@ def route_to_bots(post_content:str,threshold:float=0.15):
             matched_bots.append((doc.metadata["bot_id"],score))
     return matched_bots
 
-sample_post="What do you think about the future of AI and its impact on society?"
+sample_post="OpenAI just released a new model that might replTweakace junior developers."
 print(f"Post: {sample_post}\n")
 matched=route_to_bots(sample_post)
 print(f"Matched Bots: {matched}")
