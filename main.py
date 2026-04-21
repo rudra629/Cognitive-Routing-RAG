@@ -122,3 +122,9 @@ initial_state = {
     "search_results": "",
     "final_post": {}
 }
+
+result = app.invoke(initial_state)
+print("Final Post Output:")
+print(json.dumps(result["final_post"], indent=2))
+
+#
